@@ -1,8 +1,8 @@
-# [Sistema de matrículas]
+# Sistema de matrículas
 
 Projeto criado para realização do projeto **Sistema de Matrículas** da disciplina Laboratório de Desenvolvimento de Software. O projeto visa o desenvolvimento de um software capaz de ser acessado por 3 tipos de usuários, afim de gerenciarem as matrículas realizadas.
 
-Os usuários aluno e professor serão cadastrados pelo usuário secretário, assim sendo capazes de logarem no sistema. Além disso, o sistema permitirá a criação e manutenção de matrículas, cursos e disciplinas. Visando assim, um software intuitivo e útil para o usuário final.
+Os usuários aluno e professor serão cadastrados pelo usuário secretário, assim sendo capazes de logarem no sistema. Além disso, o sistema permitirá a criação e manutenção de matrículas, cursos e disciplinas.
 
 ## Alunos integrantes da equipe
 
