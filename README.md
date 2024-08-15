@@ -17,6 +17,11 @@ Os usuários aluno e professor serão cadastrados pelo usuário secretário, ass
 
 ## Histórias de usuário
 
-* US1 - Eu como aluno desejo poder acessar o sistema durante o período de matrículas para me matrícular em até 4 disciplínas como primeira opção e 2 optativas.
-* US2 - Eu como professor desejo acessar o sistema para saber quais são os alunos que estão matriculados em cada disciplina.
-* US3 - Como secretário eu gostaria de gerar currículo de modo que as disciplinas fiquem disponíveis para a matrícula.
+* US1 - Eu como aluno desejo poder acessar o sistema durante o período de matrículas para me matricular em até 4 disciplinas como primeira opção e 2 optativas.
+* US2 - Eu como aluno desejo poder cancelar minha matrícula em uma disciplina para caso de mudança de disciplina ou ajuste de carga horária.
+* US3 - Eu como professor desejo acessar a lista de alunos matriculados em minhas disciplinas para saber quais alunos estarão em minhas turmas.
+* US4 - Como secretário eu gostaria de gerar currículo de modo que as disciplinas fiquem disponíveis para a matrícula.
+* US5 - Como secretário eu gostaria que disciplinas com menos de 3 alunos matriculados sejam automaticamente canceladas ao fim do período de matrículas.
+* US6 - Como secretário eu gostaria de ser notificado quando um aluno for matriculado em uma disciplina para ter um controle dos alunos matriculados nas disciplinas.
+* US7 - Como usuário do sistema eu gostaria de fazer login utilizando minhas credenciais e senha.
+
