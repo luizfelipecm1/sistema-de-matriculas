@@ -27,4 +27,4 @@ Os usuários aluno e professor serão cadastrados pelo usuário secretário, ass
 
 ## Diagrama de caso de uso
 
-![Diagrama de Caso de Uso do Sistema de Matrículas](/Documentacao/Diagramas/caso_de_uso_sistema_de_matriculas.png "Diagrama de Caso de Uso do Sistema de Matrículas.")
+![Diagrama de Caso de Uso do Sistema de Matrículas](/Documentacao/Diagramas/diagrama-de-caso-de-uso.png "Diagrama de Caso de Uso do Sistema de Matrículas.")
