@@ -45,5 +45,6 @@ Caso queira rodar a main de um terminal, garanta que tem acesso às dependência
 Após isso, rode:
 
 ```bash
+cd Codigo/backend/backend
 python -m main
 ```
