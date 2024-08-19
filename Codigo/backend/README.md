@@ -1,4 +1,4 @@
-# How to run
+# Como rodar
 
 ## Requisitos
 - Python ^3.12
@@ -16,7 +16,7 @@ curl -sSL https://install.python-poetry.org | python3 -
 
 Com o poetry instalado, podemos instalar as dependências como abaixo:
 
-```
+```bash
 cd Codigo/backend
 poetry install
 ```
@@ -34,7 +34,7 @@ poetry shell
 
 O seu terminal deverá ficar com a aparência assim:
 
-```
+```bash
 (backend-py3.12) [TBD]$
 ```
 
@@ -44,6 +44,6 @@ Caso queira rodar a main de um terminal, garanta que tem acesso às dependência
 
 Após isso, rode:
 
-```
+```bash
 python -m main
 ```
