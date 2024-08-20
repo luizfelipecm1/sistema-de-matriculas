@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+from models.usuario import Usuario
 
-class Aluno(BaseModel):
-    pass
+class Aluno(Usuario):
+    def sayHi():
+        print("hi")
