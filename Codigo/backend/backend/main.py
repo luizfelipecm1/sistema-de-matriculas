@@ -1,3 +1,4 @@
+from models import Aluno
 from functools import partial
 
 
@@ -36,15 +37,42 @@ def menu_secretario():
         header="Bem vindo, Secretário(a)!",
         opcoes={
             "Gerar Currículo": partial(print, "gerar curriculo"),
-            "Gerênciar Alunos": partial(print, "gerenciar alunos"),
-            "Gerênciar Professores": partial(print, "gerenciar professores"),
+            "Gerenciar Alunos": menu_gerencia_alunos,
+            "Gerenciar Professores": partial(print, "gerenciar professores"),
         },
         voltar=menu_login,
     )
 
 
+def menu_gerencia_alunos():
+    menu(
+        header="Gerência de Alunos",
+        opcoes={
+            "Listar": partial(print, "listar alunos"),
+            "Cadastrar": cadastrar_aluno,
+            "Editar": partial(print, "editar aluno"),
+            "Remover": partial(print, "remover aluno"),
+        },
+        voltar=menu_secretario,
+    )
+
+
 def menu_login():
-    menu(opcoes={"Login": partial(print, "login")})
+    menu(opcoes={"Login": menu_secretario})
+
+
+def cadastrar_aluno():
+    print("Digite os campos do Aluno")
+
+    nome = input("Nome: ")
+    email = input("Email: ")
+    senha = input("Senha: ")
+    cpf = input("Cpf: ")
+
+    aluno = Aluno(nome=nome, email=email, senha=senha, cpf=cpf)
+
+    f = open("database/usuarios", "a")
+    f.write(aluno.model_json_schema())
 
 
 def run():
