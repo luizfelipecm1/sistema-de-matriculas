@@ -1,10 +1,12 @@
-from models import Aluno
+import json
 from functools import partial
+from models import Aluno
+from utils import divider
 
 
 def menu(opcoes: dict, header: str = None, voltar=None):
     # Print dos itens do menu
-    print("==========================")
+    divider()
     if header:
         print(header)
     i: int = 1
@@ -58,10 +60,11 @@ def menu_gerencia_alunos():
 
 
 def menu_login():
-    menu(opcoes={"Login": menu_secretario})
+    menu(opcoes={"Login": menu_gerencia_alunos})
 
 
 def cadastrar_aluno():
+    divider()
     print("Digite os campos do Aluno")
 
     nome = input("Nome: ")
@@ -71,11 +74,28 @@ def cadastrar_aluno():
 
     aluno = Aluno(nome=nome, email=email, senha=senha, cpf=cpf)
 
-    f = open("database/usuarios", "a")
-    f.write(aluno.model_json_schema())
+    with open("database/usuarios.json") as f:
+        data = json.load(f)
+
+    data.append(aluno.model_dump())
+
+    with open("database/usuarios.json", "w") as f:
+        json.dump(data, f, indent=4)
+
+
+def login():
+    print("Login")
+
+    nome = input("Nome: ")
+    senha = input("Senha: ")
+
+    # with open("database/usuarios.json", "r") as f:
+    #     usuarios = json.load(f)
+    #     print(usuarios)
 
 
 def run():
+    # open("database/usuarios.json", "x")
     print("**Sistema de Matrículas**")
     menu_login()
 
