@@ -2,7 +2,6 @@ from view import login_view
 
 
 def run():
-    # open("database/usuarios.json", "x")
     print("**Sistema de Matrículas**")
     login_view.menu_login()
 
