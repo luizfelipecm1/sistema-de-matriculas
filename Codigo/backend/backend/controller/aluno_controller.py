@@ -2,6 +2,7 @@ import json
 from model import Aluno
 from util import divider
 
+
 def cadastrar_aluno():
     divider()
     print("Digite os campos do Aluno")
@@ -11,7 +12,7 @@ def cadastrar_aluno():
     senha = input("Senha: ")
     cpf = input("Cpf: ")
 
-    aluno = Aluno(nome=nome, email=email, senha=senha, cpf=cpf)
+    aluno = Aluno(nome=nome, tipo="aluno", email=email, senha=senha, cpf=cpf)
 
     with open("database/usuarios.json") as f:
         data = json.load(f)
