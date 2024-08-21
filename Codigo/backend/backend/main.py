@@ -9,6 +9,7 @@ def menu(opcoes: dict, header: str = None, voltar=None):
     divider()
     if header:
         print(header)
+        print()
     i: int = 1
     for opcao in opcoes:
         print(f"{i} - {opcao}")
@@ -60,7 +61,7 @@ def menu_gerencia_alunos():
 
 
 def menu_login():
-    menu(opcoes={"Login": menu_gerencia_alunos})
+    menu(opcoes={"Login": login})
 
 
 def cadastrar_aluno():
@@ -84,14 +85,26 @@ def cadastrar_aluno():
 
 
 def login():
+    divider()
     print("Login")
+    print()
 
-    nome = input("Nome: ")
+    email = input("Email: ")
     senha = input("Senha: ")
 
-    # with open("database/usuarios.json", "r") as f:
-    #     usuarios = json.load(f)
-    #     print(usuarios)
+    with open("database/usuarios.json", "r") as f:
+        usuarios = json.load(f)
+
+    usuario = next((usuario for usuario in usuarios if usuario["email"] == email), None)
+
+    if usuario == None:
+        print("Usuário não encontrado.")
+        menu_login()
+    elif usuario["senha"] == senha:
+        menu_secretario()
+    else:
+        print("Senha incorreta.")
+        menu_login()
 
 
 def run():
