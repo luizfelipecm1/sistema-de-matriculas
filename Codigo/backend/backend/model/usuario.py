@@ -3,7 +3,7 @@ from typing import Optional
 from pydantic import BaseModel, EmailStr
 
 
-class Tipo(Enum):
+class Tipo(str, Enum):
     Aluno = "aluno"
     Professor = "professor"
     Secretario = "secretario"

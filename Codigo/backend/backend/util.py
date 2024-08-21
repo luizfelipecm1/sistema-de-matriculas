@@ -1,6 +1,7 @@
 def divider():
     print("==========================")
 
+
 def menu(opcoes: dict, header: str = None, voltar=None):
     # Print dos itens do menu
     divider()

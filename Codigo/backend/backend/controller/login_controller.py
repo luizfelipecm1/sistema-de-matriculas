@@ -3,6 +3,7 @@ from model import Usuario, Tipo
 from util import divider
 from view import aluno_view, login_view, professor_view, secretario_view
 
+
 def login():
     divider()
     print("Login")
