@@ -1,4 +1,4 @@
-from models.usuario import Usuario
+from model.usuario import Usuario
 
 class Aluno(Usuario):
     def sayHi():

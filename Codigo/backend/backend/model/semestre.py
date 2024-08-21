@@ -1,5 +1,5 @@
-from models import Curso
-from models import Disciplina
+from model import Curso
+from model import Disciplina
 from pydantic import BaseModel
 
 

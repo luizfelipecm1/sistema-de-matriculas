@@ -1,4 +1,4 @@
-from models.disciplina import Disciplina
+from model.disciplina import Disciplina
 from pydantic import BaseModel
 
 
