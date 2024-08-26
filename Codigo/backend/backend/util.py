@@ -43,3 +43,17 @@ def ler_arquivo(caminho: str):
         dados = json.load(f)
 
     return dados
+
+
+def escrever_no_arquivo(caminho: str, dados: dict):
+    with open(caminho, "w") as f:
+        json.dump(dados, f, indent=4)
+
+
+def pedir_dados_usuario():
+    nome = input("Nome: ")
+    email = input("Email: ")
+    senha = input("Senha: ")
+    cpf = input("Cpf: ")
+
+    return nome, email, senha, cpf
