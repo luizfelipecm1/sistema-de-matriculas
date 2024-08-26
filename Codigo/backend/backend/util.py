@@ -8,6 +8,15 @@ def divider():
 
 
 def menu(opcoes: dict, header: str = None, voltar=None):
+    """ 
+    Menu genérico para printar no terminal as funções que o usuário pode desempenhar.
+    Utilizado para navegação do sistema.
+
+    Argumentos:
+    header -- texto aparente no topo do menu
+    opcoes -- opcoes de seleção do usuário
+    voltar -- função de retorno do usuário (ao apertar 9)
+    """
     # Print dos itens do menu
     divider()
     if header:
