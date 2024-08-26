@@ -1,17 +1,8 @@
 import json
 from model import Aluno
-from util import divider
 
 
-def cadastrar_aluno():
-    divider()
-    print("Digite os campos do Aluno")
-
-    nome = input("Nome: ")
-    email = input("Email: ")
-    senha = input("Senha: ")
-    cpf = input("Cpf: ")
-
+def cadastrar_aluno(nome: str, email: str, senha: str, cpf: str):
     aluno = Aluno(nome=nome, tipo="aluno", email=email, senha=senha, cpf=cpf)
 
     with open("database/usuarios.json") as f:

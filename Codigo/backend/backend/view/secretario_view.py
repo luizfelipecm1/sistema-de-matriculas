@@ -1,7 +1,8 @@
 from controller import aluno_controller
 from functools import partial
-from util import menu
+from util import divider, menu
 from view import login_view
+
 
 def menu_secretario():
     menu(
@@ -20,9 +21,21 @@ def menu_gerencia_alunos():
         header="Gerência de Alunos",
         opcoes={
             "Listar": partial(print, "listar alunos"),
-            "Cadastrar": aluno_controller.cadastrar_aluno,
+            "Cadastrar": cadastrar_aluno,
             "Editar": partial(print, "editar aluno"),
             "Remover": partial(print, "remover aluno"),
         },
         voltar=menu_secretario,
     )
+
+
+def cadastrar_aluno():
+    divider()
+    print("Digite os campos do Aluno")
+
+    nome = input("Nome: ")
+    email = input("Email: ")
+    senha = input("Senha: ")
+    cpf = input("Cpf: ")
+
+    aluno_controller.cadastrar_aluno(nome=nome, email=email, senha=senha, cpf=cpf)
