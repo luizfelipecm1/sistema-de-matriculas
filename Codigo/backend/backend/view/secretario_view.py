@@ -1,5 +1,6 @@
-from controller import aluno_controller
+from controller import usuario_controller
 from functools import partial
+from model import Usuario, Tipo
 from util import divider, menu
 from view import login_view
 
@@ -21,7 +22,7 @@ def menu_gerencia_alunos():
         header="Gerência de Alunos",
         opcoes={
             "Listar": partial(print, "listar alunos"),
-            "Cadastrar": cadastrar_aluno,
+            "Cadastrar": partial(cadastrar_usuario, tipo=Tipo.Aluno),
             "Editar": partial(print, "editar aluno"),
             "Remover": partial(print, "remover aluno"),
         },
@@ -29,13 +30,22 @@ def menu_gerencia_alunos():
     )
 
 
-def cadastrar_aluno():
+def cadastrar_usuario(tipo: Tipo):
     divider()
-    print("Digite os campos do Aluno")
+    print(f"Digite os campos do {tipo.value.capitalize()}")
 
     nome = input("Nome: ")
     email = input("Email: ")
     senha = input("Senha: ")
     cpf = input("Cpf: ")
 
-    aluno_controller.cadastrar_aluno(nome=nome, email=email, senha=senha, cpf=cpf)
+    usuario = Usuario(nome=nome, tipo=tipo, email=email, senha=senha, cpf=cpf)
+    usuario_controller.cadastrar(usuario=usuario)
+
+    match tipo:
+        case Tipo.Aluno:
+            menu_gerencia_alunos()
+        case Tipo.Professor:
+            pass
+        case Tipo.Secretario:
+            pass

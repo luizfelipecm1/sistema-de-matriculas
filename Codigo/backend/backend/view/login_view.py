@@ -25,5 +25,5 @@ def login():
                 professor_view.menu_professor()
             case Tipo.Secretario:
                 secretario_view.menu_secretario()
-    else:
-        menu_login()
+
+    menu_login()
