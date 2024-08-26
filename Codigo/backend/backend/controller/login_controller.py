@@ -1,12 +1,10 @@
-import json
 from model import Usuario
+from util import CAMINHO_USUARIOS, ler_arquivo
 
 
 def login(email: str, senha: str):
-    with open("database/usuarios.json", "r") as f:
-        usuarios = json.load(f)
-
-    usuario = next((usuario for usuario in usuarios if usuario["email"] == email), None)
+    usuarios: dict = ler_arquivo(CAMINHO_USUARIOS)
+    usuario = usuarios.get(email, None)
 
     if usuario != None:
         usuario = Usuario.model_validate(usuario)
