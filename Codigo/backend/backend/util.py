@@ -1,3 +1,8 @@
+import json
+
+CAMINHO_USUARIOS = "database/usuarios.json"
+
+
 def divider():
     print("==========================")
 
@@ -31,3 +36,10 @@ def menu(opcoes: dict, header: str = None, voltar=None):
     # Opção inválida, chamar menu novamente
     else:
         menu(opcoes=opcoes, voltar=voltar)
+
+
+def ler_arquivo(caminho: str):
+    with open(caminho) as f:
+        dados = json.load(f)
+
+    return dados
