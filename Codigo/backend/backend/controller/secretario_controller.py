@@ -1,8 +1,22 @@
-from model import Tipo, Usuario
-from util import CAMINHO_USUARIOS, escrever_no_arquivo, ler_arquivo
+from model import Curso, Disciplina, Tipo, Semestre, Usuario
+from util import CAMINHO_CURSOS, CAMINHO_USUARIOS, escrever_no_arquivo, ler_arquivo
 
 
-def cadastrar(usuario: Usuario):
+def gerarCurriculo(curso: Curso, disciplinas: list[Disciplina]):
+    cursos: dict = ler_arquivo(CAMINHO_CURSOS)
+    
+    periodo = curso.semestres[-1].periodo + 1 if curso.semestres else 1
+
+    semestre = Semestre(periodo=periodo, disciplinas=disciplinas)
+    curso.semestres.append(semestre)
+    cursos[curso.nome] = curso.model_dump()
+    
+    escrever_no_arquivo(CAMINHO_CURSOS, cursos)
+
+    print("Currículo do semestre gerado com sucesso!")
+
+
+def cadastrarUsuario(usuario: Usuario):
     usuarios: dict = ler_arquivo(CAMINHO_USUARIOS)
     usuario_cadastrado = usuarios.get(usuario.email, None)
 
@@ -17,7 +31,7 @@ def cadastrar(usuario: Usuario):
     print("Usuário cadastrado com sucesso!")
 
 
-def listar(tipo: Tipo):
+def listarUsuarios(tipo: Tipo):
     usuarios: dict = ler_arquivo(CAMINHO_USUARIOS)
 
     for _, usuario in usuarios.items():
@@ -27,7 +41,7 @@ def listar(tipo: Tipo):
     print("Usuários listados com sucesso!")
 
 
-def editar(email_atual: str, usuario: Usuario):
+def editarUsuario(email_atual: str, usuario: Usuario):
     usuarios: dict = ler_arquivo(CAMINHO_USUARIOS)
     
     if email_atual not in usuarios:
@@ -44,7 +58,7 @@ def editar(email_atual: str, usuario: Usuario):
     print("Usuário editado com sucesso!")
 
 
-def remover(email: str):
+def removerUsuario(email: str):
     usuarios: dict = ler_arquivo(CAMINHO_USUARIOS)
 
     if email not in usuarios:

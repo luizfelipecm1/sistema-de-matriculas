@@ -1,0 +1,14 @@
+{
+    "AEDS": {
+        "nome": "AEDS",
+        "ativa": false,
+        "professor": {
+            "nome": "Fernando",
+            "tipo": "professor",
+            "email": "fernando@gmail.com",
+            "senha": "123",
+            "cpf": "123"
+        },
+        "alunos": []
+    }
+}

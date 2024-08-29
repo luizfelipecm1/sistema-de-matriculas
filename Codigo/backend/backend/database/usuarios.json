@@ -5,5 +5,12 @@
         "email": "admin@admin.com",
         "senha": "admin",
         "cpf": "123456789"
+    },
+    "fernando@gmail.com": {
+        "nome": "Fernando",
+        "tipo": "professor",
+        "email": "fernando@gmail.com",
+        "senha": "123",
+        "cpf": "123"
     }
 }

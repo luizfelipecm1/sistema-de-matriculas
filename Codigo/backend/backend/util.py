@@ -1,5 +1,7 @@
 import json
 
+CAMINHO_CURSOS = "database/cursos.json"
+CAMINHO_DISCIPLINAS = "database/disciplinas.json"
 CAMINHO_USUARIOS = "database/usuarios.json"
 
 

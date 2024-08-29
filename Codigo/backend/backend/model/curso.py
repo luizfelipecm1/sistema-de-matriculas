@@ -6,5 +6,5 @@ from pydantic import BaseModel
 class Curso(BaseModel):
     nome: str
     creditos: int
-    disciplinas: list[Semestre]
+    semestres: list[Semestre]
     alunos: list[Aluno]

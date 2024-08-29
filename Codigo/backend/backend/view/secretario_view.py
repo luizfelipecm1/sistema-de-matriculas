@@ -1,7 +1,14 @@
 from controller import secretario_controller
 from functools import partial
-from model import Tipo, Usuario
-from util import divider, menu, pedir_dados_usuario
+from model import Curso, Tipo, Usuario
+from util import (
+    CAMINHO_CURSOS,
+    CAMINHO_DISCIPLINAS,
+    divider,
+    ler_arquivo,
+    menu,
+    pedir_dados_usuario,
+)
 from view import login_view
 
 
@@ -9,12 +16,43 @@ def menu_secretario():
     menu(
         header="Bem vindo, Secretário(a)!",
         opcoes={
-            "Gerar Currículo": partial(print, "gerar curriculo"),
+            "Gerar Currículo": gerar_curriculo,
             "Gerenciar Alunos": menu_gerencia_alunos,
             "Gerenciar Professores": menu_gerencia_professores,
         },
         voltar=login_view.menu_login,
     )
+
+
+def gerar_curriculo():
+    divider()
+    print("Gerar Currículo")
+    curso_selecionado = input("Digite o nome do curso que deseja gerar currículo: ")
+    cursos: dict = ler_arquivo(caminho=CAMINHO_CURSOS)
+    disciplinas: dict = ler_arquivo(caminho=CAMINHO_DISCIPLINAS)
+
+    if curso_selecionado not in cursos:
+        print("Curso não encontrado.")
+        gerar_curriculo()
+        return
+
+    curso: Curso = Curso.model_validate(cursos[curso_selecionado])
+
+    print()
+    print("Agora preencha os dados do semestre")
+    i = 0
+    n = int(input("Número de disciplinas: "))
+
+    disciplinas_curriculo = []
+    while i < n:
+        disciplina = input(f"Disciplina {i+1}: ")
+        if disciplina in disciplinas:
+            disciplinas_curriculo.append(disciplinas[disciplina])
+            i += 1
+            break
+        print("Disciplina não encontrada.")
+
+    secretario_controller.gerarCurriculo(curso=curso, disciplinas=disciplinas_curriculo)
 
 
 def menu_gerencia_alunos():
@@ -45,7 +83,7 @@ def menu_gerencia_professores():
 
 def listar_usuario(tipo: Tipo):
     divider()
-    secretario_controller.listar(tipo=tipo)
+    secretario_controller.listarUsuarios(tipo=tipo)
 
     chamar_menu_gerencia_usuario(tipo=tipo)
 
@@ -57,7 +95,7 @@ def cadastrar_usuario(tipo: Tipo):
     nome, email, senha, cpf = pedir_dados_usuario()
 
     usuario = Usuario(nome=nome, tipo=tipo, email=email, senha=senha, cpf=cpf)
-    secretario_controller.cadastrar(usuario=usuario)
+    secretario_controller.cadastrarUsuario(usuario=usuario)
 
     chamar_menu_gerencia_usuario(tipo=tipo)
 
@@ -70,7 +108,7 @@ def editar_usuario(tipo: Tipo):
     nome, email, senha, cpf = pedir_dados_usuario()
 
     usuario = Usuario(nome=nome, tipo=tipo, email=email, senha=senha, cpf=cpf)
-    secretario_controller.editar(email_atual=email_atual, usuario=usuario)
+    secretario_controller.editarUsuario(email_atual=email_atual, usuario=usuario)
 
     chamar_menu_gerencia_usuario(tipo=tipo)
 
@@ -78,7 +116,7 @@ def editar_usuario(tipo: Tipo):
 def remover_usuario(tipo: Tipo):
     divider()
     email = input(f"Digite o email do {tipo.value} que deseja remover: ")
-    secretario_controller.remover(email=email)
+    secretario_controller.removerUsuario(email=email)
 
     chamar_menu_gerencia_usuario(tipo=tipo)
 

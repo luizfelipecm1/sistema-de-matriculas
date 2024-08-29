@@ -1,0 +1,26 @@
+{
+    "Engenharia de Software": {
+        "nome": "Engenharia de Software",
+        "creditos": 20,
+        "semestres": [
+            {
+                "periodo": 1,
+                "disciplinas": [
+                    {
+                        "nome": "AEDS",
+                        "ativa": false,
+                        "professor": {
+                            "nome": "Fernando",
+                            "tipo": "professor",
+                            "email": "fernando@gmail.com",
+                            "senha": "123",
+                            "cpf": "123"
+                        },
+                        "alunos": []
+                    }
+                ]
+            }
+        ],
+        "alunos": []
+    }
+}
