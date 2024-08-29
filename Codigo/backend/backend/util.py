@@ -8,7 +8,7 @@ def divider():
 
 
 def menu(opcoes: dict, header: str = None, voltar=None):
-    """ 
+    """
     Menu genérico para printar no terminal as funções que o usuário pode desempenhar.
     Utilizado para navegação do sistema.
 
