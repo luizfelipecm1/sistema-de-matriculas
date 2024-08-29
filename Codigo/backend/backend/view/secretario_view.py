@@ -1,4 +1,4 @@
-from controller import usuario_controller
+from controller import secretario_controller
 from functools import partial
 from model import Tipo, Usuario
 from util import divider, menu, pedir_dados_usuario
@@ -11,7 +11,7 @@ def menu_secretario():
         opcoes={
             "Gerar Currículo": partial(print, "gerar curriculo"),
             "Gerenciar Alunos": menu_gerencia_alunos,
-            "Gerenciar Professores": partial(print, "gerenciar professores"),
+            "Gerenciar Professores": menu_gerencia_professores,
         },
         voltar=login_view.menu_login,
     )
@@ -30,9 +30,22 @@ def menu_gerencia_alunos():
     )
 
 
+def menu_gerencia_professores():
+    menu(
+        header="Gerência de Professores",
+        opcoes={
+            "Listar": partial(listar_usuario, tipo=Tipo.Professor),
+            "Cadastrar": partial(cadastrar_usuario, tipo=Tipo.Professor),
+            "Editar": partial(editar_usuario, tipo=Tipo.Professor),
+            "Remover": partial(remover_usuario, tipo=Tipo.Professor),
+        },
+        voltar=menu_secretario,
+    )
+
+
 def listar_usuario(tipo: Tipo):
     divider()
-    usuario_controller.listar(tipo=tipo)
+    secretario_controller.listar(tipo=tipo)
 
     chamar_menu_gerencia_usuario(tipo=tipo)
 
@@ -44,7 +57,7 @@ def cadastrar_usuario(tipo: Tipo):
     nome, email, senha, cpf = pedir_dados_usuario()
 
     usuario = Usuario(nome=nome, tipo=tipo, email=email, senha=senha, cpf=cpf)
-    usuario_controller.cadastrar(usuario=usuario)
+    secretario_controller.cadastrar(usuario=usuario)
 
     chamar_menu_gerencia_usuario(tipo=tipo)
 
@@ -57,7 +70,7 @@ def editar_usuario(tipo: Tipo):
     nome, email, senha, cpf = pedir_dados_usuario()
 
     usuario = Usuario(nome=nome, tipo=tipo, email=email, senha=senha, cpf=cpf)
-    usuario_controller.editar(email_atual=email_atual, usuario=usuario)
+    secretario_controller.editar(email_atual=email_atual, usuario=usuario)
 
     chamar_menu_gerencia_usuario(tipo=tipo)
 
@@ -65,7 +78,7 @@ def editar_usuario(tipo: Tipo):
 def remover_usuario(tipo: Tipo):
     divider()
     email = input(f"Digite o email do {tipo.value} que deseja remover: ")
-    usuario_controller.remover(email=email)
+    secretario_controller.remover(email=email)
 
     chamar_menu_gerencia_usuario(tipo=tipo)
 
@@ -75,6 +88,6 @@ def chamar_menu_gerencia_usuario(tipo: Tipo):
         case Tipo.Aluno:
             menu_gerencia_alunos()
         case Tipo.Professor:
-            pass
+            menu_gerencia_professores()
         case Tipo.Secretario:
             pass
