@@ -1,8 +1,10 @@
-from model.disciplina import Disciplina
+from model import Aluno
+from .semestre import Semestre
 from pydantic import BaseModel
 
 
 class Curso(BaseModel):
     nome: str
     creditos: int
-    disciplinas: tuple[Disciplina]
+    disciplinas: list[Semestre]
+    alunos: list[Aluno]
