@@ -1,5 +1,6 @@
 import json
 from model import Professor, Disciplina
+from view import login_view
 
 from util import CAMINHO_USUARIOS, CAMINHO_DISCIPLINAS, ler_arquivo
 
@@ -22,6 +23,7 @@ def listarAlunos(disciplina: Disciplina, disciplina_selecionada: str):
         if disciplina["nome"] == disciplina_selecionada:
             print(f"Disciplina: {disciplina["nome"]}, Ativa: {disciplina["ativa"]}")
             print("Alunos:")
+            print(login_view.logged_in_user)
             for aluno in disciplina["alunos"]:
                 print(f"Nome: {aluno['nome']}, Email: {aluno['email']}, CPF: {aluno['cpf']}")
 
