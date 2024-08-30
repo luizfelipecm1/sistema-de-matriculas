@@ -2,4 +2,5 @@ from model.usuario import Usuario
 
 
 class Professor(Usuario):
-    pass
+    def sayHi():
+        print("hi")
