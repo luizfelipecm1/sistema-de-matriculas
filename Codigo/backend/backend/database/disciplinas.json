@@ -9,6 +9,14 @@
             "senha": "123",
             "cpf": "123"
         },
-        "alunos": []
+        "alunos": [
+            {
+                "nome": "Luiz",
+                "tipo": "aluno",
+                "email": "lfcamposdemorais@gmail.com",
+                "senha": "123456",
+                "cpf":"07636661659"
+                }
+        ]
     }
 }
