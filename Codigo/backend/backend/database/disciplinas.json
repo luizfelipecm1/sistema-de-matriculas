@@ -18,5 +18,25 @@
                 "cpf":"07636661659"
                 }
         ]
+    },
+    "LDS": {
+        "nome": "LDS",
+        "ativa": false,
+        "professor": {
+            "nome": "Aramuni",
+            "tipo": "professor",
+            "email": "aramuni@gmail.com",
+            "senha": "123",
+            "cpf": "123"
+        },
+        "alunos": [
+            {
+                "nome": "Luiz",
+                "tipo": "aluno",
+                "email": "lfcamposdemorais@gmail.com",
+                "senha": "123456",
+                "cpf":"07636661659"
+                }
+        ]
     }
 }

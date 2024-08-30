@@ -19,5 +19,12 @@
         "email": "lfcamposdemorais@gmail.com",
         "senha": "123456",
         "cpf": "07636661659"
+    },
+    "aramuni@gmail.com": {
+        "nome": "Aramuni",
+        "tipo": "professor",
+        "email": "aramuni@gmail.com",
+        "senha": "123",
+        "cpf": "123"
     }
 }

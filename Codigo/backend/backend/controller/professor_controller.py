@@ -18,13 +18,16 @@ def cadastrar_professor(nome: str, email: str, senha: str, cpf: str):
 
 def listarAlunos(disciplina: Disciplina, disciplina_selecionada: str):
     disciplinas: dict = ler_arquivo(caminho=CAMINHO_DISCIPLINAS)
-
-    for _, disciplina in disciplinas.items():
-        if disciplina["nome"] == disciplina_selecionada:
-            print(f"Disciplina: {disciplina["nome"]}, Ativa: {disciplina["ativa"]}")
-            print("Alunos:")
-            print(login_view.logged_in_user)
-            for aluno in disciplina["alunos"]:
-                print(f"Nome: {aluno['nome']}, Email: {aluno['email']}, CPF: {aluno['cpf']}")
-
-    print("Usuários listados com sucesso!")
+    dataLogin = login_view.logged_in_user.model_dump_json()
+    validaLogin = json.loads(dataLogin)
+    while True:
+        for _, disciplina in disciplinas.items():
+            if disciplina["nome"] == disciplina_selecionada and validaLogin["email"] == disciplina["professor"]["email"]:
+                print(f"Disciplina: {disciplina["nome"]}, Ativa: {disciplina["ativa"]}")
+                print("Alunos:")
+                for aluno in disciplina["alunos"]:
+                    print(f"Nome: {aluno['nome']}, Email: {aluno['email']}, CPF: {aluno['cpf']}")
+                print("Usuários listados com sucesso!")
+                return
+            else:
+                disciplina_selecionada = input("Essa disciplina não está cadastrada para você. Por favor, insira o nome da disciplina novamente: ")
