@@ -1,12 +1,13 @@
 from enum import Enum
 from typing import Optional
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr 
 
 
 class Tipo(str, Enum):
     Aluno = "aluno"
     Professor = "professor"
     Secretario = "secretario"
+    Financeiro = "financeiro"
 
 
 class Usuario(BaseModel):

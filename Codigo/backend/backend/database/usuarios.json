@@ -26,5 +26,12 @@
         "email": "aramuni@gmail.com",
         "senha": "123",
         "cpf": "123"
+    },
+    "financeiro@gmail.com": {
+        "nome": "Jeferson",
+        "tipo": "financeiro",
+        "email": "financeiro@gmail.com",
+        "senha": "123",
+        "cpf": "123"
     }
 }

@@ -1,7 +1,7 @@
 from controller import login_controller
 from model import Tipo
 from util import divider, menu
-from view import aluno_view, professor_view, secretario_view
+from view import aluno_view, financeiro_view, professor_view, secretario_view
 logged_in_user = None
 
 
@@ -28,6 +28,9 @@ def login():
                 professor_view.menu_professor()
             case Tipo.Secretario:
                 secretario_view.menu_secretario()
+            case Tipo.Financeiro:
+                financeiro_view.menu_financeiro()
+            
         return
 
     menu_login()
