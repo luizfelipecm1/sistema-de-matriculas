@@ -20,13 +20,11 @@
                             {
                                 "nome": "teste",
                                 "tipo": "aluno",
-                                "email": "aluno@aluno.com",
+                                "email": "teste@teste.com",
                                 "senha": "123",
                                 "cpf": "123"
                             }
-                        ],
-                        "carga_horaria": 40,
-                        "preco_por_hora": 8
+                        ]
                     }
                 ]
             },
@@ -45,22 +43,13 @@
                         },
                         "alunos": [
                             {
-                                "nome": "Aluno",
+                                "nome": "teste",
                                 "tipo": "aluno",
-                                "email": "aluno@gmail.com",
+                                "email": "teste@teste.com",
                                 "senha": "123",
                                 "cpf": "123"
-                            },
-                            {
-                                "nome": "Andre",
-                                "tipo": "aluno",
-                                "email": "andre@gmail.com",
-                                "senha": "123",
-                                "cpf": "082729482"
                             }
-                        ],
-                        "carga_horaria": 80,
-                        "preco_por_hora": 8
+                        ]
                     },
                     {
                         "nome": "IHC",
@@ -73,20 +62,10 @@
                             "cpf": "123"
                         },
                         "alunos": [
-                            {
-                                "nome": "Aluno",
-                                "tipo": "aluno",
-                                "email": "aluno@gmail.com",
-                                "senha": "123",
-                                "cpf": "123"
-                            }
-                        ],
-                        "carga_horaria": 40,
-                        "preco_por_hora": 8
+                        ]
                     }
                 ]
             }
-        ],
-        "alunos": []
+        ]
     }
 }

@@ -5,3 +5,4 @@ from .professor import Professor
 from .semestre import Semestre
 from .secretario import Secretario
 from .usuario import Tipo, Usuario
+from .matricula import Matricula
