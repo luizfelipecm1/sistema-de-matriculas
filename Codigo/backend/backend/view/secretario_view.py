@@ -1,9 +1,10 @@
 from controller import secretario_controller
 from functools import partial
-from model import Curso, Tipo, Usuario
+from model import Curso, Disciplina, Professor, Tipo, Usuario
 from util import (
     CAMINHO_CURSOS,
     CAMINHO_DISCIPLINAS,
+    CAMINHO_USUARIOS,
     divider,
     ler_arquivo,
     menu,
@@ -16,11 +17,23 @@ def menu_secretario():
     menu(
         header="Bem vindo, Secretário(a)!",
         opcoes={
-            "Gerar Currículo": gerar_curriculo,
             "Gerenciar Alunos": menu_gerencia_alunos,
             "Gerenciar Professores": menu_gerencia_professores,
+            "Gerenciar Cursos/Disciplinas": menu_gerencia_cursos_disciplinas,
         },
         voltar=login_view.menu_login,
+    )
+
+
+def menu_gerencia_cursos_disciplinas():
+    menu(
+        header="Gerência de Cursos",
+        opcoes={
+            "Gerar Currículo": gerar_curriculo,
+            "Cadastrar Curso": cadastrar_curso,
+            "Cadastrar Disciplina": cadastrar_disciplina,
+        },
+        voltar=menu_secretario,
     )
 
 
@@ -53,6 +66,45 @@ def gerar_curriculo():
         print("Disciplina não encontrada.")
 
     secretario_controller.gerarCurriculo(curso=curso, disciplinas=disciplinas_curriculo)
+
+
+def cadastrar_curso():
+    divider()
+    print("Digite os campos da Curso")
+
+    nome = input("Nome: ")
+    creditos = input("Créditos: ")
+
+    curso = Curso(nome=nome, creditos=creditos, semestres=[], alunos=[])
+    secretario_controller.cadastrarCurso(curso=curso)
+
+    menu_gerencia_cursos_disciplinas()
+
+
+def cadastrar_disciplina():
+    divider()
+    print("Digite os campos da Disciplina")
+
+    nome = input("Nome: ")
+    email_professor = input("E-mail do professor: ")
+    usuarios: dict = ler_arquivo(CAMINHO_USUARIOS)
+
+    while email_professor not in usuarios:
+        print("Professor não encontrado.")
+        email_professor = input("E-mail do professor: ")
+
+    usuario = usuarios[email_professor]
+
+    while usuario["tipo"] != Tipo.Professor:
+        print("Usuário selecionado não é do tipo professor.")
+        email_professor = input("E-mail do professor: ")
+
+    professor = Professor.model_validate(usuario)
+    disciplina = Disciplina(nome=nome, ativa=False, professor=professor, alunos=[])
+
+    secretario_controller.cadastrarDisciplina(disciplina=disciplina)
+
+    menu_gerencia_cursos_disciplinas()
 
 
 def menu_gerencia_alunos():

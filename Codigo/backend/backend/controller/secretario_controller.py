@@ -1,5 +1,5 @@
 from model import Curso, Disciplina, Tipo, Semestre, Usuario
-from util import CAMINHO_CURSOS, CAMINHO_USUARIOS, escrever_no_arquivo, ler_arquivo
+from util import CAMINHO_CURSOS, CAMINHO_DISCIPLINAS, CAMINHO_USUARIOS, escrever_no_arquivo, ler_arquivo
 
 
 def gerarCurriculo(curso: Curso, disciplinas: list[Disciplina]):
@@ -70,3 +70,23 @@ def removerUsuario(email: str):
     escrever_no_arquivo(CAMINHO_USUARIOS, usuarios)
 
     print("Usuário removido com sucesso!")
+
+
+def cadastrarDisciplina(disciplina: Disciplina):
+    disciplinas: dict = ler_arquivo(CAMINHO_DISCIPLINAS)
+
+    disciplinas[disciplina.nome] = disciplina.model_dump()
+
+    escrever_no_arquivo(CAMINHO_DISCIPLINAS, disciplinas)
+
+    print("Disciplina cadastrado com sucesso!")
+
+
+def cadastrarCurso(curso: Curso):
+    disciplinas: dict = ler_arquivo(CAMINHO_CURSOS)
+
+    disciplinas[curso.nome] = curso.model_dump()
+
+    escrever_no_arquivo(CAMINHO_CURSOS, disciplinas)
+
+    print("Curso cadastrado com sucesso!")
