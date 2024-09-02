@@ -44,10 +44,9 @@ def gerar_curriculo():
     cursos: dict = ler_arquivo(caminho=CAMINHO_CURSOS)
     disciplinas: dict = ler_arquivo(caminho=CAMINHO_DISCIPLINAS)
 
-    if curso_selecionado not in cursos:
+    while curso_selecionado not in cursos:
         print("Curso não encontrado.")
-        gerar_curriculo()
-        return
+        curso_selecionado = input("Digite o nome do curso que deseja gerar currículo: ")
 
     curso: Curso = Curso.model_validate(cursos[curso_selecionado])
 
@@ -59,11 +58,13 @@ def gerar_curriculo():
     disciplinas_curriculo = []
     while i < n:
         disciplina = input(f"Disciplina {i+1}: ")
-        if disciplina in disciplinas:
-            disciplinas_curriculo.append(disciplinas[disciplina])
-            i += 1
-            break
-        print("Disciplina não encontrada.")
+
+        while disciplina not in disciplinas:
+            print("Disciplina não encontrada.")
+            disciplina = input(f"Disciplina {i+1}: ")
+
+        disciplinas_curriculo.append(disciplinas[disciplina])
+        i += 1
 
     secretario_controller.gerarCurriculo(curso=curso, disciplinas=disciplinas_curriculo)
 
