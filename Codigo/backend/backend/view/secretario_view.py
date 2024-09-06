@@ -68,6 +68,8 @@ def gerar_curriculo():
 
     secretario_controller.gerarCurriculo(curso=curso, disciplinas=disciplinas_curriculo)
 
+    menu_gerencia_cursos_disciplinas()
+
 
 def cadastrar_curso():
     divider()
